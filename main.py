@@ -1,14 +1,22 @@
-# main.py
-
 import sys
 from PyQt6.QtWidgets import QApplication
-from gui import FloatingWidget
+from mainwindow import MainWindow
 
 def main():
     app = QApplication(sys.argv)
-    floating_widget = FloatingWidget()
-    floating_widget.show()
+    
+    # Read the style sheet file
+    with open('style.qss', 'r') as file:
+        style_sheet = file.read()
+    
+    # Apply the style sheet
+    app.setStyleSheet(style_sheet)
+    
+    # Create and show your main window
+    main_win = MainWindow()
+    main_win.show()
+    
     sys.exit(app.exec())
 
-
-main()
+if __name__ == '__main__':
+    main()
